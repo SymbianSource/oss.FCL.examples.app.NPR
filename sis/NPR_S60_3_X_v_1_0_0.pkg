@@ -1,0 +1,47 @@
+; Installation file for NPR application
+;
+; This is an auto-generated PKG file by Carbide.
+; This file uses variables specific to Carbide builds that will not work
+; on command-line builds. If you want to use this generated PKG file from the
+; command-line tools you will need to modify the variables with the appropriate
+; values: $(EPOCROOT), $(PLATFORM), $(TARGET)
+;
+;Language - standard language definitions
+&EN
+
+; standard SIS file header
+#{"NPR"},(0xEEB0E481),1,0,0
+
+;Localised Vendor name
+%{"Symbian Foundation"}
+
+;Unique Vendor name
+:"Symbian Foundation"
+
+;Supports Series 60 v 3.0
+[0x101F7961], 0, 0, 0, {"Series60ProductID"}
+
+;Files to install
+;You should change the source paths to match that of your environment
+;<source> <destination>
+"$(EPOCROOT)Epoc32\release\$(PLATFORM)\$(TARGET)\NPR_0xEEB0E481.exe"		-"!:\sys\bin\NPR_0xEEB0E481.exe"
+"$(EPOCROOT)Epoc32\data\z\resource\apps\NPR_0xEEB0E481.rsc"		-"!:\resource\apps\NPR_0xEEB0E481.rsc"
+"$(EPOCROOT)Epoc32\data\z\private\10003a3f\apps\NPR_0xEEB0E481_reg.rsc"	-"!:\private\10003a3f\import\apps\NPR_0xEEB0E481_reg.rsc"
+"$(EPOCROOT)Epoc32\data\z\resource\apps\NPR_0xEEB0E481.mif" -"!:\resource\apps\NPR_0xEEB0E481.mif"
+"..\help\NPR_0xEEB0E481.hlp"							 -"!:\resource\help\NPR_0xEEB0E481.hlp"
+"$(EPOCROOT)Epoc32\data\z\resource\apps\list_icons.mbm" -"!:\resource\apps\list_icons.mbm"
+
+; Add any installation notes if applicable
+;"NPR.txt"		-"!:\private\EEB0E481\NPR.txt"
+"..\testdata\pic1.jpg" -"c:\data\npr\pic1.jpg"
+"..\testdata\pic2.jpg" -"c:\data\npr\pic2.jpg"
+"..\testdata\pic3.jpg" -"c:\data\npr\pic3.jpg"
+"..\testdata\pic4.jpg" -"c:\data\npr\pic4.jpg"
+"..\testdata\pic5.jpg" -"c:\data\npr\pic5.jpg"
+"..\testdata\pic6.jpg" -"c:\data\npr\pic6.jpg"
+
+;required for application to be covered by backup/restore facility 
+"..\sis\backup_registration.xml"		-"!:\private\EEB0E481\backup_registration.xml"
+"..\data\npr_news_stream.rm" -"!:\data\npr_news_stream.rm"
+"..\data\npr_station_stream.rm" -"!:\data\npr_station_stream.rm"
+

@@ -1,0 +1,41 @@
+/*
+ ===========================================================================================
+ Name	: bld.inf
+ Author	: John Kern
+ 
+ Copyright (c) 2009 Symbian Foundation Ltd
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ - Symbian Foundation Ltd - initial contribution.
+ 
+ Contributors:
+ - John Kern
+ - Symsource
+ 
+ Description : This file provides the information required for building the whole of a NPR.
+ ===========================================================================================
+ */
+
+PRJ_PLATFORMS
+WINSCW ARMV5 GCCE
+
+PRJ_EXPORTS
+../testdata/pic1.jpg c:/data/npr/pic1.jpg
+../testdata/pic2.jpg c:/data/npr/pic2.jpg
+../testdata/pic3.jpg c:/data/npr/pic3.jpg
+../testdata/pic4.jpg c:/data/npr/pic4.jpg
+../testdata/pic5.jpg c:/data/npr/pic5.jpg
+../testdata/pic6.jpg c:/data/npr/pic6.jpg
+
+PRJ_MMPFILES
+
+gnumakefile icons_scalable_dc.mk
+
+gnumakefile ..\help\build_help.mk
+
+NPR.mmp
+

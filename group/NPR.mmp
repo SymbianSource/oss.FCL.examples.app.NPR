@@ -1,0 +1,113 @@
+/*
+ ============================================================================
+ Name	: NPR.mmp
+ Author	: John Kern
+ 
+ Copyright (c) 2009 Symbian Foundation Ltd
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ - Symbian Foundation Ltd - initial contribution.
+ 
+ Contributors:
+ - John Kern
+ - Symsource
+ 
+ Description : This is the project specification file for NPR
+ ============================================================================
+ */
+
+TARGET			NPR_0xEEB0E481.exe
+TARGETTYPE		exe
+UID		  0x100039CE 0xEEB0E481
+
+EPOCHEAPSIZE 0x8000 0xFA000
+
+SOURCEPATH		..\src
+SOURCE			NPR.cpp
+SOURCE			NPRApplication.cpp
+SOURCE			NPRAppView.cpp
+SOURCE			NPRAppUi.cpp
+SOURCE			NPRDocument.cpp
+SOURCE			HttpClient.cpp
+SOURCE			NPRStoryXmlParser.cpp
+SOURCE			NPRStationXmlParser.cpp
+SOURCE			NPRAppEngine.cpp
+SOURCE			NPRStory.cpp
+SOURCE			NPRStation.cpp
+SOURCE			NPRListBox.cpp
+SOURCE			NPRListBoxView.cpp
+SOURCE 			NPRStationListBox.cpp
+SOURCE			NPRStationListBoxView.cpp
+SOURCE 			NPRSearchStationListBox.cpp
+SOURCE 			NPRSearchStationListBoxView.cpp
+SOURCE 			NPRStoryListBoxView.cpp
+SOURCE 			NPRStoryListBox.cpp
+SOURCE			NPRBrowserAknView.cpp
+SOURCE			NPRBrowserContainer.cpp
+SOURCE 			NPRHtmlCreator.cpp
+
+SOURCEPATH		..\data
+
+START RESOURCE	NPR.rss
+HEADER
+TARGET NPR_0xEEB0E481
+TARGETPATH resource\apps
+END //RESOURCE
+
+START RESOURCE	NPR_reg.rss
+TARGET NPR_0xEEB0E481_reg
+TARGETPATH 	  \private\10003a3f\apps
+END //RESOURCE
+
+USERINCLUDE	   ..\inc
+USERINCLUDE    ..\help ..\data
+SYSTEMINCLUDE	 \epoc32\include
+
+LIBRARY		   euser.lib
+LIBRARY		   apparc.lib
+LIBRARY		   cone.lib
+LIBRARY		   eikcore.lib
+LIBRARY		   avkon.lib
+LIBRARY		   commonengine.lib
+LIBRARY		   efsrv.lib 
+LIBRARY		   estor.lib
+LIBRARY        aknnotify.lib
+LIBRARY		   eikctl.lib 
+LIBRARY		   eikcoctl.lib 
+LIBRARY  	   apgrfx.lib
+LIBRARY  	   apmime.lib
+LIBRARY  	   commonui.lib
+LIBRARY  	   aknicon.lib
+LIBRARY  	   egul.lib
+LIBRARY        hlplch.lib
+LIBRARY        inetprotutil.lib
+LIBRARY        http.lib
+LIBRARY        bafl.lib
+LIBRARY        esock.lib
+LIBRARY        xmlframework.lib
+LIBRARY        etext.lib
+LIBRARY		   BrowserEngine.lib
+
+LANG SC
+
+VENDORID	  	  0
+SECUREID		  0xEEB0E481
+CAPABILITY	  	  NetworkServices ReadUserData WriteDeviceData SwEvent
+
+#ifdef ENABLE_ABIV2_MODE
+DEBUGGABLE_UDEBONLY
+#endif
+
+START BITMAP	list_icons.mbm
+HEADER
+TARGETPATH		\resource\apps
+SOURCEPATH		..\gfx
+SOURCE	c24,1	npr_symbian_generic.bmp 
+SOURCE	c24,1	npr_symbian_generic_mask.bmp 
+END
+
+// End of File

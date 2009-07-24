@@ -1,0 +1,636 @@
+/*
+ ============================================================================
+ Name	: NPR.rss
+ Author	: John Kern
+ 
+ Copyright (c) 2009 Symbian Foundation Ltd
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ - Symbian Foundation Ltd - initial contribution.
+ 
+ Contributors:
+ - John Kern
+ - Symsource
+ 
+ Description : This file contains all the resources for the NPR
+ ============================================================================
+ */
+
+/*
+============================================================================
+ Name		: NPR.rss
+ Author	  : John Kern
+ Copyright   : This component and the accompanying materials are made available under the terms of the License "Eclipse Public License v1.0"  which accompanies this distribution, and is available at the URL "http://www.eclipse.org/legal/epl-v10.html".
+ Description : This file contains all the resources for the NPR.
+============================================================================
+*/
+//  RESOURCE IDENTIFIER
+NAME NPRX	// 4 letter ID
+
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <appinfo.rh>
+#include "NPR.hrh"
+#include "NPR.rls"
+
+//  RESOURCE DEFINITIONS
+// -----------------------------------------------------------------------------
+//
+//	Define the resource file signature
+//	This resource should be empty.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE RSS_SIGNATURE
+	{
+	}
+
+// -----------------------------------------------------------------------------
+//
+//	Default Document Name
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF r_default_document_name
+	{
+	buf="NPRX";
+	}
+
+// -----------------------------------------------------------------------------
+//
+//	Define default menu and CBA key.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE EIK_APP_INFO
+	{
+	menubar = r_menubar;
+	cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+	}
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_menubar
+//   Main menubar
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_BAR r_menubar
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_menu; }
+		};
+	}
+
+
+// -----------------------------------------------------------------------------
+//
+//   r_menu
+//   Menu for "Options"
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE MENU_PANE r_menu
+	{
+	items =
+		{
+		// added the new Options menu command here
+		MENU_ITEM
+				{
+				command = ERequestNprCmd;
+				txt = qnt_npr_channel;
+				},
+		MENU_ITEM
+				{
+				command = EAbout;
+				txt = qtn_about;
+				},
+		MENU_ITEM
+				{
+				command = EAknSoftkeyExit;
+				txt = qtn_exit;
+				}
+		};
+	}
+
+// -----------------------------------------------------------------------------
+//
+// About dialog resource.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE DIALOG r_about_query_dialog
+	{
+	flags = EGeneralQueryFlags | EEikDialogFlagNoBorder | EEikDialogFlagNoShadow;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+	items=
+		{
+		DLG_LINE 
+			{
+			type = EAknCtPopupHeadingPane;
+			id = EAknMessageQueryHeaderId;
+			itemflags = EEikDlgItemNonFocusing;
+			control = AVKON_HEADING
+				{
+				};
+			},
+		DLG_LINE
+			{
+			type = EAknCtMessageQuery;
+			id = EAknMessageQueryContentId;
+			control = AVKON_MESSAGE_QUERY
+				{
+				};
+			}
+		};
+	}
+
+
+// -----------------------------------------------------------------------------
+//
+// Resources for messages.
+//
+// -----------------------------------------------------------------------------
+//
+RESOURCE TBUF32 r_caption_string { buf=qtn_caption_string; }
+RESOURCE TBUF32 r_about_dialog_title { buf=qtn_about_dialog_title; }
+RESOURCE TBUF r_about_dialog_text { buf=qtn_about_dialog_text; }
+RESOURCE TBUF r_command1_text { buf=qtn_command1_text; }
+
+
+// ---------------------------------------------------------------------------- 
+//
+// r_localisable_app_info
+//
+// ---------------------------------------------------------------------------- 
+//
+RESOURCE LOCALISABLE_APP_INFO r_localisable_app_info
+	{
+	short_caption = qtn_caption_string;
+	caption_and_icon = 
+	CAPTION_AND_ICON_INFO
+		{
+		caption = qtn_caption_string;
+
+		number_of_icons = 1;
+		icon_file = "\\resource\\apps\\NPR_0xEEB0E481.mif";
+		};
+	}
+
+
+/////////////////////////////////////////////////////////////////////
+//Main view
+RESOURCE AVKON_VIEW r_nprlist_box_nprlist_box_view
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+	menubar = r_nprlist_box_options_menu;
+	toolbar = 0;
+	}
+RESOURCE MENU_BAR r_nprlist_box_options_menu
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_nprlist_box_menu; }
+		};
+	}
+
+RESOURCE MENU_PANE r_nprlist_box_menu
+	{
+	items =
+		{
+		// added the new Options menu command here
+		MENU_ITEM
+				{
+				command = ESelect;
+				txt = "Select";
+				}
+		};
+	}
+
+RESOURCE STATUS_PANE_APP_MODEL r_nprlist_box_status_pane
+	{
+	panes =
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidTitle;
+			type = EAknCtTitlePane;
+			resource = r_nprlist_box_title_resource;
+			}
+		};
+	}
+
+RESOURCE TITLE_PANE r_nprlist_box_title_resource
+	{
+	txt = "NPR";
+	}
+
+RESOURCE LISTBOX r_nprlist_box_list_box
+	{
+	flags = EAknListBoxSelectionList;
+	}
+
+RESOURCE ARRAY r_nprlist_box_listbox_item1
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "News";
+			}
+		};
+	}
+
+RESOURCE ARRAY r_nprlist_box_listbox_item2
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Stations";
+			}
+		};
+	}
+
+RESOURCE ARRAY r_nprlist_box_listbox_item3
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Programs";
+			}
+		};
+	}
+
+RESOURCE ARRAY r_nprlist_box_listbox_item4
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Playlists";
+			}
+		};
+	}
+
+RESOURCE ARRAY r_nprlist_box_listbox_item5
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Settings";
+			}
+		};
+	}
+
+/////////////////////////////////////////////////////////////////////
+//Story view
+RESOURCE AVKON_VIEW r_nprstory_list_box_nprstory_list_box_view
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+	menubar = r_nprstory_list_box_options_menu;
+	toolbar = 0;
+	}
+
+RESOURCE MENU_BAR r_nprstory_list_box_options_menu
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_nprstory_list_box_menu; }
+		};
+	}
+
+RESOURCE MENU_PANE r_nprstory_list_box_menu
+	{
+	items =
+		{
+		// added the new Options menu command here
+		MENU_ITEM
+				{
+				command = ESelect;
+				txt = "Select";
+				}
+		};
+	}
+
+RESOURCE STATUS_PANE_APP_MODEL r_nprstory_list_box_status_pane
+	{
+	panes =
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidTitle;
+			type = EAknCtTitlePane;
+			resource = r_nprstory_list_box_title_resource;
+			}
+		};
+	}
+
+RESOURCE TITLE_PANE r_nprstory_list_box_title_resource
+	{
+	txt = "News";
+	}
+
+RESOURCE LISTBOX r_nprstory_list_box_list_box
+	{
+	flags = EAknListBoxSelectionList;
+	}
+
+
+/////////////////////////////////////////////////////////////////////
+//Stations view
+RESOURCE AVKON_VIEW r_nprstation_list_box_nprstation_list_box_view
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+	menubar = r_nprstation_list_box_options_menu;
+	toolbar = 0;
+	}
+
+RESOURCE MENU_BAR r_nprstation_list_box_options_menu
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_nprlist_list_box_menu; }
+		};
+	}
+
+RESOURCE MENU_PANE r_nprlist_list_box_menu
+	{
+	items =
+		{
+		// added the new Options menu command here
+		MENU_ITEM
+				{
+				command = EListen;
+				txt = "Listen";
+				}
+		};
+	}
+
+RESOURCE STATUS_PANE_APP_MODEL r_nprstation_list_box_status_pane
+	{
+	panes =
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidTitle;
+			type = EAknCtTitlePane;
+			resource = r_nprstation_list_box_title_resource;
+			}
+		};
+	}
+RESOURCE TITLE_PANE r_nprstation_list_box_title_resource
+	{
+	txt = "STATIONS";
+	}
+
+RESOURCE LISTBOX r_nprstation_list_box_list_box
+	{
+	flags = EAknListBoxSelectionList;
+	}
+
+
+/////////////////////////////////////////////////////////////////////
+//Search stations view
+RESOURCE AVKON_VIEW r_nprsearch_station_list_box_nprsearch_station_list_box_view
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+	menubar = r_nprsearch_station_list_box_options_menu;
+	toolbar = 0;
+	}
+RESOURCE MENU_BAR r_nprsearch_station_list_box_options_menu
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_nprsearch_station_list_box_menu; }
+		};
+	}
+
+RESOURCE MENU_PANE r_nprsearch_station_list_box_menu
+	{
+	items =
+		{
+		// added the new Options menu command here
+		MENU_ITEM
+				{
+				command = ESelect;
+				txt = "Select";
+				}
+		};
+	}
+
+RESOURCE STATUS_PANE_APP_MODEL r_nprsearch_station_list_box_status_pane
+	{
+	panes =
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidTitle;
+			type = EAknCtTitlePane;
+			resource = r_nprsearch_station_list_box_title_resource;
+			}
+		};
+	}
+RESOURCE TITLE_PANE r_nprsearch_station_list_box_title_resource
+	{
+	txt = "Search station";
+	}
+RESOURCE LISTBOX r_nprsearch_station_list_box_list_box
+	{
+	flags = EAknListBoxSelectionList;
+	}
+
+RESOURCE ARRAY r_nprsearch_station_list_box_item1
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Search by ZIP code";
+			}
+		};
+	}
+
+RESOURCE ARRAY r_nprsearch_station_list_box_item2
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Current Location";
+			}
+		};
+	}
+
+RESOURCE ARRAY r_nprsearch_station_list_box_item3
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Search City name";
+			}
+		};
+	}
+
+RESOURCE ARRAY r_nprsearch_station_list_box_item4
+	{
+	items =
+		{
+		LBUF
+			{
+			txt = "Show All";
+			}
+		};
+	}
+
+/////////////////////////////////////////////////////////////////////
+//Query dialog
+RESOURCE DIALOG R_ASK_NAME_DIALOG
+    {
+    flags = EGeneralQueryFlags;
+    buttons = R_AVKON_SOFTKEYS_OK_CANCEL;
+    items=
+        {
+        DLG_LINE
+            {
+            type = EAknCtQuery;
+            id = EGeneralQuery;
+            control= AVKON_DATA_QUERY 
+                { 
+                layout = EDataLayout;
+                control = EDWIN
+                    { 
+                    flags= EEikEdwinNoHorizScrolling | EEikEdwinResizable; 
+                    maxlength = 5; 
+                    width = 4; 
+                    lines = 1;
+                    default_input_mode = EAknEditorNumericInputMode;
+                    };
+                };
+            }
+        };
+    }
+
+////////////////////////////////////////////////////////////////////////
+//waiting dialog
+RESOURCE DIALOG r_singular_wait_note
+	{
+    flags   = EAknWaitNoteFlags;
+    buttons = R_AVKON_SOFTKEYS_EMPTY;
+    items =
+        {
+        DLG_LINE
+            {
+            type    = EAknCtNote;
+            id      = 10;
+            control = AVKON_NOTE
+                {
+                layout         = EWaitLayout;
+                singular_label = "";
+                plural_label   = "";
+                animation      = R_QGN_GRAF_WAIT_BAR_ANIM;
+                };
+            }
+        };
+    }
+
+//////////////////////////////////////////////////////////////////////////
+//Browser view
+RESOURCE AVKON_VIEW r_akn_browser_view
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+	menubar = r_nprstation_list_box_options_menu;
+	toolbar = 0;
+	}
+
+////////////////////////////////////////////////////////////////
+//Story viewer
+RESOURCE AVKON_VIEW r_nprstory_viewer_container_nprstory_viewer_container_view
+	{
+	cba = R_AVKON_SOFTKEYS_OPTIONS_BACK;
+	menubar = r_nprstory_viewer_container_options_menu;
+	toolbar = 0;
+	}
+
+RESOURCE MENU_BAR r_nprstory_viewer_container_options_menu
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_nprstory_viewer_container_menu; }
+		};
+	}
+
+RESOURCE MENU_PANE r_nprstory_viewer_container_menu
+	{
+	items =
+		{
+		// added the new Options menu command here
+		MENU_ITEM
+				{
+				command = EListen;
+				txt = "Listen";
+				}
+		};
+	}
+
+RESOURCE STATUS_PANE_APP_MODEL r_nprstory_viewer_container_status_pane
+	{
+	panes =
+		{
+		SPANE_PANE
+			{
+			id = EEikStatusPaneUidTitle;
+			type = EAknCtTitlePane;
+			resource = r_nprstory_viewer_container_title_resource;
+			}
+		};
+	}
+
+RESOURCE TITLE_PANE r_nprstory_viewer_container_title_resource
+	{
+	txt = "News";
+	}
+
+RESOURCE RTXTED r_nprstory_viewer_container_rich_text1
+	{
+	numlines = 2;
+	default_case = EAknEditorTextCase;
+	allowed_case_modes = EAknEditorAllCaseModes;
+	numeric_keymap = EAknEditorStandardNumberModeKeymap;
+	default_input_mode = EAknEditorTextInputMode;
+	allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;
+	}
+
+RESOURCE TBUF r_nprstory_viewer_container_rich_text1_2
+	{
+	buf = "Title";
+	}
+
+RESOURCE RTXTED r_nprstory_viewer_container_rich_text2
+	{
+	numlines = 0;
+	default_case = EAknEditorTextCase;
+	allowed_case_modes = EAknEditorAllCaseModes;
+	numeric_keymap = EAknEditorStandardNumberModeKeymap;
+	default_input_mode = EAknEditorTextInputMode;
+	allowed_input_modes = EAknEditorTextInputMode | EAknEditorNumericInputMode | EAknEditorSecretAlphaInputMode | EAknEditorKatakanaInputMode | EAknEditorFullWidthTextInputMode | EAknEditorFullWidthNumericInputMode | EAknEditorFullWidthKatakanaInputMode | EAknEditorHiraganaKanjiInputMode | EAknEditorHalfWidthTextInputMode;
+	}
+
+RESOURCE TBUF r_nprstory_viewer_container_rich_text2_2
+	{
+	buf = "Body Text";
+	}
+
+// End of File

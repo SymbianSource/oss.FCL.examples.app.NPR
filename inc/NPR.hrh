@@ -1,0 +1,81 @@
+/*
+ ============================================================================
+ Name	: NPR.hrh
+ Author	: John Kern
+ 
+ Copyright (c) 2009 Symbian Foundation Ltd
+ This component and the accompanying materials are made available
+ under the terms of the License "Eclipse Public License v1.0"
+ which accompanies this distribution, and is available
+ at the URL "http://www.eclipse.org/legal/epl-v10.html".
+
+ Initial Contributors:
+ - Symbian Foundation Ltd - initial contribution.
+ 
+ Contributors:
+ - John Kern
+ - Symsource
+ 
+ Description:
+ ============================================================================
+ */
+
+#ifndef __NPR_HRH__
+#define __NPR_HRH__
+
+#define _UID3 0xEEB0E481
+
+// NPR enumerate AppUi commands code
+enum TNPRAppUiIds
+	{
+	EPlayCmd = 0x6001, // start value must not be 0
+	EPauseCmd,
+	ERequestNprCmd, 
+	EListen,
+	ESelect,
+	EShare, 
+	EHelp, 
+	EAbout,
+	ELoadPage
+	};
+
+// NPR enumerate command codes
+enum TNPRCommands
+	{
+	ENewsCmd = 0x0,
+	EStationsCmd,
+	EPlayStationStream,
+	EPlayNewsStream,
+	EPlaylist,
+	ESettings
+	};
+
+// NPR enumerate topic codes
+enum TNPRTopics
+	{
+	ENews = 0x0,
+	EStations,
+	EPrograms
+	};
+
+// NPR enumerate search codes
+enum TNPRStationSearch
+	{
+	EZipCode = 0x0,
+	ECurrentLocation,
+	ECityName,
+	EShowAll
+	};
+
+// NPR enumerate aknview uid
+enum TNPRViewUids
+	{
+	ENPRListBoxViewId = 0x1,
+	ENPRStationListBoxViewId,
+	ENPRSearchStationListBoxViewId,
+	ENPRStoryListBoxViewId,
+	ENPRBrowserViewId,
+	ENPRStoryViewerContainerViewId
+	};
+
+#endif // __NPR_HRH__
